@@ -1,0 +1,147 @@
+$bg-color: #020023;
+$dot-color: #110D50;
+
+
+$dot-size: 3px;
+$dot-space: 22px;
+$dot-opacity: 0.3;
+
+body {
+	background:
+		linear-gradient(90deg, $bg-color ($dot-space - $dot-size), transparent 1%) center,
+		linear-gradient($bg-color ($dot-space - $dot-size), transparent 1%) center,
+		$dot-color;
+	background-size: $dot-space $dot-space;
+  font-family: 'Space Mono', monospace;
+  font-weight: 300;
+  letter-spacing: 4px;
+  color:#FF00C5;
+  animation: lines 2s ease-out infinite;
+  /*opacity:0.3;*/
+  mix-blend-mode: color-burn;
+  pointer-events: none;
+}
+
+@keyframes lines {
+  0% {
+     background-position:0px 0px;
+  }
+  100% {
+     background-position:0px 25px;
+  }
+}
+
+.glitch{
+  color:#FF00C5;
+  font-size:55px;
+  position:relative;
+  width:1000px;
+  margin:0 auto;
+}
+@keyframes noise-anim{
+  $steps:20;
+  @for $i from 0 through $steps{
+    #{percentage($i*(1/$steps))}{
+      clip:rect(random(100)+px,9999px,random(100)+px,0);
+    }
+  }
+}
+.glitch:after{
+  content:attr(data-text);
+  position:absolute;
+  left:2px;
+  text-shadow:-1px 0 red;
+  top:0;
+  color:white;
+  background:black;
+  overflow:hidden;
+  clip:rect(0,900px,0,0); 
+  animation:noise-anim 2s infinite linear alternate-reverse;
+}
+
+@keyframes noise-anim-2{
+  $steps:20;
+  @for $i from 0 through $steps{
+    #{percentage($i*(1/$steps))}{
+      clip:rect(random(100)+px,9999px,random(100)+px,0);
+    }
+  }
+}
+.glitch:before{
+  content:attr(data-text);
+  position:absolute;
+  left:-2px;
+  text-shadow:1px 0 blue; 
+  top:0;
+  color:white;
+  background:black;
+  overflow:hidden;
+  clip:rect(0,900px,0,0); 
+  animation:noise-anim-2 3s infinite linear alternate-reverse;
+}
+
+a {
+  border-bottom: 1px solid #ffffff;
+  color:#ffffff; 
+  line-height: 24px;
+  text-decoration: none;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 300px;
+  z-index: 9;
+}
+
+.typewriter::after {
+  content: "|";
+  display: inline;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+h1 {
+  letter-spacing: 2px;
+  color:#FF00C5;
+  line-height: 24px;
+  font-size:48px;
+}
+
+h3 {
+  letter-spacing: 2px;
+  color:#FF00C5;
+  line-height: 24px;
+  word-wrap: normal;
+  font-size: 20px;
+}
+
+h3 {
+  letter-spacing: 2px;
+  color:#FF00C5;
+  line-height: 24px;
+  word-wrap: normal;
+  font-size: 18px;
+}
+
+h4 {
+  letter-spacing: 2px;
+  color:#FF00C5;
+  line-height: 24px;
+  word-wrap: normal;
+  font-size:12px;
+}
